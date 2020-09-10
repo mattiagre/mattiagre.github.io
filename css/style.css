@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto+Mono&display=swap');
+
+.bg-dark {
+  background-color: #0f0f0f !important;
+}
+
+.alert {
+  margin-bottom: 0;
+  border-radius: 6px;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navbar-brand {
+  font: 3.5vh 'Lobster', cursive;
+}
+
+@media screen and (orientation: landscape) {
+  .navbar-brand {
+    font-size: 3.5vw;
+  }
+}
+
+.navbar-toggler {
+  border: none;
+  padding: 0;
+}
+
+.user-account-icon {
+  display: inline-block;
+  vertical-align: middle;
+  background: url('../img/login.png') no-repeat center center;
+  background-size: 100% 100%;
+  width: 30px;
+  height: 30px;
+}
+
+.divider {
+  color: white !important;
+}
+
+@media screen and (max-width: 992px) {
+  .divider {
+    display: none;
+  }
+}
+
+.nav-link {
+  font-family: 'Roboto Mono', monospace;
+}
