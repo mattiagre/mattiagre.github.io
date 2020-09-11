@@ -6,7 +6,12 @@
 
 .alert {
   margin-bottom: 0;
-  border-radius: 6px;
+  border-radius: 0px;
+  line-height: 1rem;
+}
+
+.alert > span {
+  font-size: 0.8rem;
 }
 
 .unselectable {
@@ -19,13 +24,7 @@
 }
 
 .navbar-brand {
-  font: 3.5vh 'Lobster', cursive;
-}
-
-@media screen and (orientation: landscape) {
-  .navbar-brand {
-    font-size: 3.5vw;
-  }
+  font: 2rem 'Lobster', cursive;
 }
 
 .navbar-toggler {
@@ -42,6 +41,32 @@
   height: 30px;
 }
 
+#user-cart-mobile {
+  border: none;
+  padding: 0;
+  background-color: inherit;
+  margin-right: .5rem !important;
+}
+
+@media screen and (orientation: landscape) {
+  #user-cart {
+    margin-right: 1rem !important;
+  }
+}
+
+.user-cart-icon {
+  display: inline-block;
+  vertical-align: middle;
+  background: url('../img/cart.png') no-repeat center center;
+  background-size: 100% 100%;
+  width: 28px;
+  height: 28px;
+}
+
+.disabled {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
 .divider {
   color: white !important;
 }
@@ -54,4 +79,17 @@
 
 .nav-link {
   font-family: 'Roboto Mono', monospace;
+}
+
+#navbar-account {
+  flex-grow: 0;
+}
+
+@media screen and (max-width: 992px) {
+  #user-cart-desktop {
+    display: none;
+  }
+  .divider-desktop {
+    display: none;
+  }
 }

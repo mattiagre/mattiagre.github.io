@@ -1,46 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Ubuntu&display=swap');
 
+#products {
+  margin-top: 20px;
+}
+
 .product {
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 20px;
 }
 
 .product:hover {
-  border: 1px solid rgb(70, 70, 70);
+  border: 1px solid rgb(120, 120, 120);
+  border-radius: 10px;
 }
 
 .product-name {
-  font: 2.5vh 'Noto Sans', sans-serif;
+  font: 1.3rem 'Noto Sans', sans-serif;
   text-align: center;
   max-width: 80%;
-}
-
-@media screen and (orientation: landscape) {
-  .product-name {
-    font-size: 2.5vw;
-  }
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .product-img {
-  max-width: 70%;
+  max-width: 80%;
 }
 
 .product-small-description {
-  max-width: 80%;
-  max-height: 15vh;
+  margin-top: 10px;
+  max-width: 90%;
+  max-height: 300px;
   overflow-y: hidden;
-  font: 3.2vw 'Ubuntu', sans-serif;
+  font: 12px 'Ubuntu', sans-serif;
   color: rgb(20, 20, 20);
 }
 
 .product-footer {
-  max-width: 80%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 90%;
   vertical-align: bottom;
 }
 
 .price {
   display: inline-block;
-  font: 3vh 'Noto Sans', sans-serif;
+  font: 1.5rem 'Noto Sans', sans-serif;
   font-style: italic;
   color: rgb(251, 113, 0);
 }

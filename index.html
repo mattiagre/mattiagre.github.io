@@ -11,9 +11,9 @@
   </head>
   <body>
     <!-- Cookies alert -->
-    <div class="alert alert-dismissible bg-dark text-justify fixed-bottom">
+    <div class="alert alert-dismissible bg-dark text-justify fixed-bottom text-white">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <span class="text-white">
+        <span>
         This website uses cookies lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Nunc velit neque, scelerisque sed nunc sed, finibus feugiat nunc.
         Integer ut nibh eu magna hendrerit imperdiet id sit amet leo.
@@ -31,10 +31,15 @@
         <!-- Brand logo -->
         <a class="navbar-brand unselectable" href="#">Coorida</a>
 
-        <!-- Account toggler -->
-        <button class="navbar-toggler" type="button" onclick="closeNavbarNav_div()" data-toggle="collapse" data-target="#navbar-account" aria-expanded="false">
-          <span class="user-account-icon"></span>
-        </button>
+        <!-- User buttons -->
+        <div>
+          <button id="user-cart-mobile" class="navbar-toggler" type="button">
+            <span class="user-cart-icon"></span>
+          </button>
+          <button class="navbar-toggler" type="button" onclick="closeNavbarNav_div()" data-toggle="collapse" data-target="#navbar-account" aria-expanded="false">
+            <span class="user-account-icon"></span>
+          </button>
+        </div>
 
         <!-- Navbar navigation -->
         <div class="collapse navbar-collapse" id="navbar-nav">
@@ -66,23 +71,47 @@
         <!-- Navbar account -->
         <div class="collapse navbar-collapse" id="navbar-account">
           <ul class="navbar-nav float-right">
-            <li class="nav-item">
+            <li id="user-cart-desktop" class="nav-item">
               <a class="nav-link active" href="">Go to Cart</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled divider divider-desktop" href="">|</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="">Log In</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled divider" href="">|</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">Log In</a>
+              <a class="nav-link active" href="">Sign In</a>
             </li>
           </ul>
         </div>
       </nav>
     </header>
 
-    <div class="container">
+    <div id="products" class="container">
       <div class="row">
-        <div class="col-sm-12 col-lg-6">
+        <div class="col-sm-12 col-md-6">
+          <div class="product">
+            <div class="product-name mx-auto">
+              Apple iPhone 11 Pro 64GB Space Gray
+            </div>
+            <img class="product-img img-fluid mx-auto d-block" src="products/img/iphone11pro1.png">
+            <div class="product-small-description mx-auto text-justify">
+              Un rivoluzionario sistema a tripla fotocamera con tantissime funzioni in più e la stessa facilità d’uso di sempre.
+              Un passo avanti senza precedenti in fatto di autonomia.
+              E un chip straordinario, che sfrutta ancora di più l’apprendimento automatico per ridefinire i limiti di ciò che uno smart­phone può fare.
+              È nato il primo iPhone così potente da meritarsi il nome Pro.
+            </div>
+            <div class="product-footer mx-auto">
+              <span class="price">999.99$</span>
+              <span class="add-to-cart float-right"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
           <div class="product">
             <div class="product-name mx-auto">
               Apple iPhone 11 Pro 64GB Space Gray
