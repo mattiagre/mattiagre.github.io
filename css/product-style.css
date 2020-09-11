@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Ubuntu&display=swap');
 
 #products {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .product {
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-bottom: 20px;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 16px;
 }
 
 .product:hover {
@@ -16,11 +16,11 @@
 }
 
 .product-name {
-  font: 1.3rem 'Noto Sans', sans-serif;
+  font: 1.2rem 'Noto Sans', sans-serif;
   text-align: center;
   max-width: 80%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .product-img {
@@ -32,28 +32,30 @@
   max-width: 90%;
   max-height: 180px;
   overflow-y: hidden;
-  font: 12px 'Ubuntu', sans-serif;
+  font: 11px 'Ubuntu', sans-serif;
   color: rgb(20, 20, 20);
 }
 
 .product-footer {
-  margin-top: 10px;
+  margin-top: 8px;
   margin-bottom: 10px;
   max-width: 90%;
-  vertical-align: bottom;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .price {
   display: inline-block;
-  font: 1.5rem 'Noto Sans', sans-serif;
+  font: 1.4rem 'Noto Sans', sans-serif;
   font-style: italic;
   color: rgb(251, 113, 0);
 }
 
 .add-to-cart {
-  background: center center no-repeat;
-  background-image: url('../img/cart.png');
-  background-size: 100%;
-  width: 20px;
-  height: 20px;
+  font-size: 1rem;
+}
+
+.btn-outline-dark:hover {
+  background-color: #0f0f0f !important;
 }

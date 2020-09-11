@@ -27,6 +27,18 @@
   font: 2rem 'Lobster', cursive;
 }
 
+@media screen and (max-width: 992px) {
+  .navbar-brand {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 295px) {
+  .navbar-brand {
+    margin-left: 0;
+  }
+}
+
 .navbar-toggler {
   border: none;
   padding: 0;
