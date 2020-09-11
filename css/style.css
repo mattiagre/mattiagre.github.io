@@ -42,10 +42,15 @@
 }
 
 #user-cart-mobile {
+  display: inline-block;
   border: none;
   padding: 0;
   background-color: inherit;
   margin-right: .5rem !important;
+}
+
+#user-cart-mobile:hover {
+  outline: 1px dotted gray;
 }
 
 @media screen and (orientation: landscape) {
@@ -58,9 +63,15 @@
   display: inline-block;
   vertical-align: middle;
   background: url('../img/cart.png') no-repeat center center;
-  background-size: 100% 100%;
+  background-size: 100%;
   width: 28px;
   height: 28px;
+}
+
+@media screen and (min-width: 992px) {
+  .user-cart-icon {
+    display: none;
+  }
 }
 
 .disabled {

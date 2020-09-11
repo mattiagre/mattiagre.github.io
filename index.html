@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/product-style.css">
@@ -29,13 +30,14 @@
         </button>
 
         <!-- Brand logo -->
-        <a class="navbar-brand unselectable" href="#">Coorida</a>
+        <a class="navbar-brand unselectable" href="">Coorida</a>
 
         <!-- User buttons -->
         <div>
-          <button id="user-cart-mobile" class="navbar-toggler" type="button">
+          <a id="user-cart-mobile" class="navbar-toggler" href="cart/">
             <span class="user-cart-icon"></span>
-          </button>
+          </a>
+          <!-- Login toggler -->
           <button class="navbar-toggler" type="button" onclick="closeNavbarNav_div()" data-toggle="collapse" data-target="#navbar-account" aria-expanded="false">
             <span class="user-account-icon"></span>
           </button>
@@ -91,9 +93,9 @@
       </nav>
     </header>
 
-    <div id="products" class="container">
+    <div id="products" class="container-lg">
       <div class="row">
-        <div class="col-sm-12 col-md-6">
+        <div class="col-12 col-sm-6 col-md-4">
           <div class="product">
             <div class="product-name mx-auto">
               Apple iPhone 11 Pro 64GB Space Gray
@@ -111,7 +113,25 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-6">
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="product">
+            <div class="product-name mx-auto">
+              Apple iPhone 11 Pro 64GB Space Gray
+            </div>
+            <img class="product-img img-fluid mx-auto d-block" src="products/img/iphone11pro1.png">
+            <div class="product-small-description mx-auto text-justify">
+              Un rivoluzionario sistema a tripla fotocamera con tantissime funzioni in più e la stessa facilità d’uso di sempre.
+              Un passo avanti senza precedenti in fatto di autonomia.
+              E un chip straordinario, che sfrutta ancora di più l’apprendimento automatico per ridefinire i limiti di ciò che uno smart­phone può fare.
+              È nato il primo iPhone così potente da meritarsi il nome Pro.
+            </div>
+            <div class="product-footer mx-auto">
+              <span class="price">999.99$</span>
+              <span class="add-to-cart float-right"></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
           <div class="product">
             <div class="product-name mx-auto">
               Apple iPhone 11 Pro 64GB Space Gray
@@ -131,7 +151,6 @@
         </div>
       </div>
     </div>
-
 
 
     <!-- jQuery library -->

@@ -30,7 +30,7 @@
 .product-small-description {
   margin-top: 10px;
   max-width: 90%;
-  max-height: 300px;
+  max-height: 180px;
   overflow-y: hidden;
   font: 12px 'Ubuntu', sans-serif;
   color: rgb(20, 20, 20);
