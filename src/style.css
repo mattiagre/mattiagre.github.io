@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.label {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10pt;
+}
+
+#date {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 100;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+}
