@@ -44,12 +44,6 @@ export class Body {
         return this.model.geometry.parameters.radius;
     }
     /**
-     * The radius (in AU) of the body, as viewed as a sphere.
-     */
-    set radius(value) {
-        this.model.geometry.parameters.radius = value;
-    }
-    /**
      * The 3D model.
      */
     model: THREE.Mesh<THREE.SphereGeometry>;

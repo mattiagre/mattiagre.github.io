@@ -4,7 +4,8 @@ import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import { Body, BodyType, BodyRotation } from './body';
 import { AstroSystem } from './astro-system';
 import { Graphics } from './graphics';
-import { Solver, LeapfrogIntegrator, YoshidaIntegrator } from './solver';
+import { Solver, VerletIntegrator, LeapfrogIntegrator, YoshidaIntegrator } from './solver';
+import * as Dat from 'dat.gui';
 
 export class SolarSystem {
     /**
@@ -27,6 +28,10 @@ export class SolarSystem {
      * Solver.
      */
     readonly solver: Solver;
+    /**
+     * Gui
+     */
+    readonly gui: Dat.GUI;
 
     static readonly INITIAL_DATE: Date = new Date(2000, 0, 1, 12, 0, 0);
 
@@ -52,6 +57,8 @@ export class SolarSystem {
 
         // Create the controls for the camera
         this.cameraControls = new OrbitControls(this.graphics.camera, this.graphics.labelRenderer.domElement);
+
+        // this.gui = new Dat.GUI();
     }
 
     loadBodiesFromJSON(path: string) {

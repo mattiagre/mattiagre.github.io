@@ -78,8 +78,8 @@ export class Graphics {
         this.scene.add(new THREE.GridHelper(60, 150));
 
         // Add the stats 
-        this.stats = Stats();
-        document.body.append(this.stats.domElement);
+        this.stats = new Stats();
+        document.body.append(this.stats.dom);
     }
 
     /**

@@ -11,6 +11,7 @@
   "author": "Mattia Gregnanin",
   "license": "ISC",
   "devDependencies": {
+    "@types/dat.gui": "^0.7.10",
     "@types/three": "^0.152.0",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
@@ -20,5 +21,8 @@
     "typescript": "^5.0.4",
     "webpack": "^5.76.1",
     "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.9"
   }
 }
