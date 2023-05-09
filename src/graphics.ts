@@ -87,7 +87,9 @@ export class Graphics {
      * @param name The name of the texture.
      */
     loadTexture(name: string) {
-        return Graphics.TEXTURE_LOADER.load(Graphics.TEXTURE_FOLDER + name, undefined, undefined, e => console.error(e.message));
+        const texture = Graphics.TEXTURE_LOADER.load(Graphics.TEXTURE_FOLDER + name, undefined, undefined, e => console.error(e.message));
+        texture.colorSpace = THREE.SRGBColorSpace;
+        return texture;
     }
 
     /**
