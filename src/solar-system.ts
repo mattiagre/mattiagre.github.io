@@ -4,7 +4,7 @@ import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import { Body, BodyType, BodyRotation } from './body';
 import { AstroSystem } from './astro-system';
 import { Graphics } from './graphics';
-import { Solver, LeapfrogIntegrator } from './solver';
+import { Solver, LeapfrogIntegrator, YoshidaIntegrator } from './solver';
 
 export class SolarSystem {
     /**
@@ -48,7 +48,7 @@ export class SolarSystem {
         document.body.appendChild(this.dateDiv);
 
         // Create the solver
-        this.solver = new Solver(LeapfrogIntegrator);
+        this.solver = new Solver(YoshidaIntegrator);
 
         // Create the controls for the camera
         this.cameraControls = new OrbitControls(this.graphics.camera, this.graphics.labelRenderer.domElement);

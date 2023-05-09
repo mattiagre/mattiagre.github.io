@@ -17,7 +17,7 @@ export class BodyRotation {
     constructor(obliquity: number, period: number) {
         this.obliquity = obliquity;
         this.period = period;
-        this.axis = new THREE.Vector3(Math.sin(obliquity * Math.PI / 180), Math.cos(obliquity * Math.PI / 180), 0).normalize();
+        this.axis = new THREE.Vector3(Math.sin(obliquity * Math.PI / 180), Math.cos(obliquity * Math.PI / 180), 0);
     }
 }
 

@@ -18,10 +18,14 @@ export interface Integrator {
 class Verlet implements Integrator {
     #prevDt: number; 
 
+    constructor(private gravityApplier: GravityApplierCallback) { }
+
     updatePositions(bodies: Body[], dt: number): void {
         // Initialize the previous time interval
         if (this.#prevDt === undefined)
             this.#prevDt = dt;
+        // Apply gravity
+        this.gravityApplier(bodies);
         bodies.forEach(body => {
             // Copy the body previous position
             const prevPosition = body.position.clone();
@@ -41,6 +45,8 @@ class Leapfrog implements Integrator {
     constructor(private gravityApplier: GravityApplierCallback) { }
 
     updatePositions(bodies: Body[], dt: number): void {
+        // Apply gravity
+        this.gravityApplier(bodies);
         // Compute v_{i + 1/2} and x_{i + 1}
         bodies.forEach(body => {
             body.velocity.add(body.acceleration.multiplyScalar(dt / 2));
@@ -54,6 +60,49 @@ class Leapfrog implements Integrator {
             body.velocity.add(body.acceleration.multiplyScalar(dt / 2));
             // Set the acceleration to zero
             body.acceleration.set(0, 0, 0);
+        });
+    }
+}
+
+class Yoshida implements Integrator {
+
+    static readonly OMEGA0 = -Math.cbrt(2) / (2 - Math.cbrt(2));
+    static readonly OMEGA1 = 1 / (2 - Math.cbrt(2));
+    static readonly C1 = this.OMEGA1 / 2;
+    static readonly C2 = (this.OMEGA0 + this.OMEGA1) / 2;
+    static readonly C3 = this.C2;
+    static readonly C4 = this.C1;
+    static readonly D1 = this.OMEGA1;
+    static readonly D2 = this.OMEGA0;
+    static readonly D3 = this.OMEGA1;
+
+    constructor(private gravityApplier: GravityApplierCallback) { }
+
+    updatePositions(bodies: Body[], dt: number): void {
+        // First iteration
+        bodies.forEach(body => { 
+            body.position.add(body.velocity.clone().multiplyScalar(Yoshida.C1 * dt));
+        });
+        this.gravityApplier(bodies);
+        // Second iteration 
+        bodies.forEach(body => {
+            body.velocity.add(body.acceleration.multiplyScalar(Yoshida.D1 * dt));
+            body.acceleration.set(0, 0, 0); 
+            body.position.add(body.velocity.clone().multiplyScalar(Yoshida.C2 * dt));
+        });
+        this.gravityApplier(bodies);
+        // Third iteration 
+        bodies.forEach(body => {
+            body.velocity.add(body.acceleration.multiplyScalar(Yoshida.D2 * dt));
+            body.acceleration.set(0, 0, 0);
+            body.position.add(body.velocity.clone().multiplyScalar(Yoshida.C3 * dt));
+        });
+        this.gravityApplier(bodies);
+        // Fourth iteration 
+        bodies.forEach(body => {
+            body.velocity.add(body.acceleration.multiplyScalar(Yoshida.D3 * dt));
+            body.acceleration.set(0, 0, 0);
+            body.position.add(body.velocity.clone().multiplyScalar(Yoshida.C4 * dt));
         });
     }
 }
@@ -82,7 +131,6 @@ export class Solver {
     updatePositions(bodies: Body[], dt: number) {
         const subDt = dt / this.nSubIteration;
         for (let i = 0; i < this.nSubIteration; i++) {
-            Solver.applyGravity(bodies);
             this.integrator.updatePositions(bodies, subDt);
         }
         // Rotate the bodies
@@ -110,8 +158,10 @@ export class Solver {
 /**
  * Uses the Stormer-Verlet method, with a local truncation error of O(dt^4), but global O(dt^2) error. Supports variable interval time dt.
  */
-export const VerletIntegrator: Integrator = new Verlet();
+export const VerletIntegrator: Integrator = new Verlet(Solver.applyGravity);
 /**
  * Uses the Leapfrog method, with a global O(dt^2) error. Can go back in time and keeps the mechanical energy constant.
  */
 export const LeapfrogIntegrator: Integrator = new Leapfrog(Solver.applyGravity);
+
+export const YoshidaIntegrator: Integrator = new Yoshida(Solver.applyGravity);
