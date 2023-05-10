@@ -133,8 +133,6 @@ export class Solver {
         for (let i = 0; i < this.nSubIteration; i++) {
             this.integrator.updatePositions(bodies, subDt);
         }
-        // Rotate the bodies
-        bodies.forEach(body => body.rotate(dt));
         this.elapsedTime += dt;
     }
 
@@ -158,10 +156,10 @@ export class Solver {
 /**
  * Uses the Stormer-Verlet method, with a local truncation error of O(dt^4), but global O(dt^2) error. Supports variable interval time dt.
  */
-export const VerletIntegrator: Integrator = new Verlet(Solver.applyGravity);
+export const VERLET_INTEGRATOR: Integrator = new Verlet(Solver.applyGravity);
 /**
  * Uses the Leapfrog method, with a global O(dt^2) error. Can go back in time and keeps the mechanical energy constant.
  */
-export const LeapfrogIntegrator: Integrator = new Leapfrog(Solver.applyGravity);
+export const LEAPFROG_INTEGRATOR: Integrator = new Leapfrog(Solver.applyGravity);
 
-export const YoshidaIntegrator: Integrator = new Yoshida(Solver.applyGravity);
+export const YOSHIDA_INTEGRATOR: Integrator = new Yoshida(Solver.applyGravity);

@@ -4,9 +4,12 @@ import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import { Body, BodyType, BodyRotation } from './body';
 import { AstroSystem } from './astro-system';
 import { Graphics } from './graphics';
-import { Solver, VerletIntegrator, LeapfrogIntegrator, YoshidaIntegrator } from './solver';
+import { Solver, VERLET_INTEGRATOR, LEAPFROG_INTEGRATOR, YOSHIDA_INTEGRATOR } from './solver';
 import * as Dat from 'dat.gui';
 
+/**
+ * A Solar System simulation.
+ */
 export class SolarSystem {
     /**
      * The object that manages graphics.
@@ -29,10 +32,22 @@ export class SolarSystem {
      */
     readonly solver: Solver;
     /**
-     * Gui
+     * GUI.
      */
     readonly gui: Dat.GUI;
+    /**
+     * Controls used by the GUI.
+     */
+    #guiControls = {
+        running: true,
+        speed: '1x',
+        integrator: 'Yoshida',
+        orbitsDensity: 1
+    }
 
+    /**
+     * Initial date used in the simulation.
+     */
     static readonly INITIAL_DATE: Date = new Date(2000, 0, 1, 12, 0, 0);
 
     /**
@@ -53,14 +68,27 @@ export class SolarSystem {
         document.body.appendChild(this.dateDiv);
 
         // Create the solver
-        this.solver = new Solver(YoshidaIntegrator);
+        this.solver = new Solver(YOSHIDA_INTEGRATOR);
 
         // Create the controls for the camera
         this.cameraControls = new OrbitControls(this.graphics.camera, this.graphics.labelRenderer.domElement);
 
-        // this.gui = new Dat.GUI();
+        // Add the gui to the dom
+        this.gui = new Dat.GUI();
+        const simulationFolder = this.gui.addFolder('Simulation');
+        simulationFolder.add(this.#guiControls, 'running').name('Running');
+        simulationFolder.add(this.#guiControls, 'speed', ['0.25x', '0.5x', '1x', '2x', '4x', '10x']).name('Speed');
+        simulationFolder.add(this.#guiControls, 'integrator', ['Verlet', 'LeapFrog', 'Yoshida']).name('Integrator');
+        simulationFolder.add(this.solver, 'nSubIteration', 1, 10, 1).name('Sub iterations');
+        const orbitsFolder = this.gui.addFolder('Orbits');
+        orbitsFolder.add(this.#guiControls, 'orbitsDensity', 0.1, 1).name('Density');
+        orbitsFolder.add(Body, 'ORBITS_MAX_VERTEX', 200, 2_000, 10).name('Max vertex');
     }
 
+    /**
+     * Loades the bodies (planets, moons, ecc...) from a JSON file.
+     * @param path The path to the file.
+     */
     loadBodiesFromJSON(path: string) {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", path, true);
@@ -69,33 +97,42 @@ export class SolarSystem {
             if (xhr.readyState != 4 || xhr.status != 200) 
                 console.error(xhr.statusText);
             // Parse the JSON and add the planets to the array
-            JSON.parse(xhr.responseText).forEach((body: any) => {
+            JSON.parse(xhr.responseText).forEach((bodyNode: any) => {
                 // Load the texture
-                const texture = this.graphics.loadTexture(body.texture);
+                const texture = this.graphics.loadTexture(bodyNode.texture);
                 // Create the model for the body
-                const rendered_radius = body.radius / (AstroSystem.AU / 30_000);
+                const rendered_radius = bodyNode.radius / (AstroSystem.AU / 30_000);
                 const model = this.graphics.createBodyModel(rendered_radius, texture);
+                model.renderOrder = 999;
                 // Add the planet's model to the scene
                 this.graphics.scene.add(model);
                 // Position and velocity
-                const position = new THREE.Vector3(body.position.y, body.position.z, body.position.x);
-                const velocity = new THREE.Vector3(body.velocity.y, body.velocity.z, body.velocity.x);
+                const position = new THREE.Vector3(bodyNode.position.y, bodyNode.position.z, bodyNode.position.x);
+                const velocity = new THREE.Vector3(bodyNode.velocity.y, bodyNode.velocity.z, bodyNode.velocity.x);
+                // Orbit 
+                let orbit: THREE.Line = undefined;
+                if (bodyNode.orbit !== undefined) {
+                    orbit = this.graphics.createOrbitLine(position, parseInt(bodyNode.orbit.color), bodyNode.orbit.thickness);
+                    if (orbit !== undefined) {
+                        this.graphics.scene.add(orbit);
+                    }
+                }
                 // Rotation 
                 let rotation: BodyRotation;
-                if (body.rotation !== undefined) {
-                    rotation = new BodyRotation(body.rotation.obliquity, body.rotation.period);
+                if (bodyNode.rotation !== undefined) {
+                    rotation = new BodyRotation(bodyNode.rotation.obliquity, bodyNode.rotation.period);
                     model.geometry.applyMatrix4(new THREE.Matrix4().makeRotationZ(-rotation.obliquity * Math.PI / 180));
                 }
                 // Create the label
                 const labelDiv = document.createElement('div');
                 labelDiv.className = 'label';
-                labelDiv.textContent = body.name;
+                labelDiv.textContent = bodyNode.name;
                 const label = new CSS2DObject(labelDiv);
                 label.position.set(0, rendered_radius * 1.2, 0);
                 model.add(label);
                 label.layers.set(0);
                 // Add the body 
-                this.bodies.push(new Body(body.name, BodyType.Planet, body.mass / AstroSystem.EARTH_MASS, model, position, velocity, rotation));
+                this.bodies.push(new Body(bodyNode.name, BodyType.Planet, bodyNode.mass / AstroSystem.EARTH_MASS, model, position, velocity, orbit, rotation));
             });
         }
         xhr.send(null);
@@ -117,6 +154,7 @@ export class SolarSystem {
         window.cancelAnimationFrame(this.#requestHandle);
     }
     
+    #lastOrbitUpdate = 0;
     // High resolution clock using for dynamics
     readonly clock = new THREE.Clock(true); 
     // The "animate" routine
@@ -126,9 +164,57 @@ export class SolarSystem {
         this.graphics.render();
         this.dateDiv.textContent = 'Epoch: ' + addMilliseconds(SolarSystem.INITIAL_DATE, this.solver.elapsedTime).toLocaleString();
 
-        const dt = this.clock.getDelta();
-        if (dt !== 0 && dt < 0.1) 
-            this.solver.updatePositions(this.bodies, dt / 5);
+        // Change the speed of the simulation
+        let multiplier: number;
+        switch (this.#guiControls.speed) {
+            case '0.25x':
+                multiplier = 0.25;
+                break;
+            case '0.5x':
+                multiplier = 0.5;
+                break;
+            case '1x':
+                multiplier = 1;
+                break;
+            case '2x':
+                multiplier = 2;
+                break;
+            case '4x':
+                multiplier = 4;
+                break;
+            case '10x':
+                multiplier = 10;
+                break;
+            default:
+                multiplier = 1;
+        }
+        
+        // Change integrator 
+        switch (this.#guiControls.integrator) {
+            case 'Verlet':
+                this.solver.integrator = VERLET_INTEGRATOR;
+                break;
+            case 'LeapFrog':
+                this.solver.integrator = LEAPFROG_INTEGRATOR;
+                break;
+            case 'Yoshida':
+                this.solver.integrator = YOSHIDA_INTEGRATOR;
+                break;
+            default: 
+                this.solver.integrator = YOSHIDA_INTEGRATOR;
+        }
+
+        // If the simulation is running, update the objects
+        const dt = this.clock.getDelta() * multiplier;
+        if (this.#guiControls.running && dt !== 0 && dt < 0.2) {
+            this.solver.updatePositions(this.bodies, dt);
+            // Rotate the body and update its orbit
+            this.bodies.forEach(body => body.rotate(dt));
+            if (this.solver.elapsedTime > this.#lastOrbitUpdate + 0.1 / this.#guiControls.orbitsDensity) {
+                this.bodies.forEach(body => body.updateOrbit());
+                this.#lastOrbitUpdate = this.solver.elapsedTime;
+            }
+        }   
     }
 }
 

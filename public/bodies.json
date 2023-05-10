@@ -13,6 +13,10 @@
             "x": 0,
             "y": 0,
             "z": 0
+        },
+        "rotation": {
+            "obliquity": 0,
+            "period": 2419200
         }
     },
     {
@@ -20,6 +24,10 @@
         "mass": 3.302E23,
         "radius": 2440,
         "texture": "mercury.jpeg",
+        "orbit": {
+            "color": "0x5D8AA8",
+            "thickness": "3"
+        },
         "position": {
             "x": -1.300777328324658E-01,
             "y": -4.472924077888585E-01,
@@ -29,6 +37,10 @@
             "x": 2.136667739451398E-02,
             "y": -6.447021044909608E-03,
             "z": -2.487810139999773E-03
+        },
+        "rotation": {
+            "obliquity": 7.005,
+            "period": 5067014400
         }
     },
     {
@@ -36,6 +48,10 @@
         "mass": 48.685E23,
         "radius": 6051.84,
         "texture": "venus.jpeg",
+        "orbit": {
+            "color": "0xFF7E00",
+            "thickness": 3
+        },
         "position": {
             "x": -7.183017032914344E-01,
             "y": -3.266938488657987E-02,
@@ -45,6 +61,10 @@
             "x": 7.985401842231983E-04,
             "y": -2.029519948471197E-02, 
             "z": -3.234756495721687E-04
+        },
+        "rotation": {
+            "obliquity": 3.39458,
+            "period": -20997152.64
         }
     },
     {
@@ -52,6 +72,10 @@
         "mass": 5.97219E24,
         "radius": 6371,
         "texture": "earth.jpeg",
+        "orbit": {
+            "color": "0x228B22",
+            "thickness": 3
+        },
         "position": {
             "x": -1.771478822733411E-01,
             "y": 9.672393401210591E-01,
@@ -72,6 +96,9 @@
         "mass": 6.4171E23,
         "radius": 3389.92,
         "texture": "mars.jpeg",
+        "orbit": {
+            "color": "0xFE0000"
+        },
         "position": {
             "x": 1.390716420540513E+00, 
             "y": 1.340503601099097E-02, 
@@ -88,6 +115,10 @@
         "mass": 189818E22,
         "radius": 69911,
         "texture": "jupiter.jpeg",
+        "orbit": {
+            "color": "0x800080",
+            "thickness": 3
+        },
         "position": {
             "x": 4.001174041917682E+00, 
             "y": 2.938580568964424E+00, 
@@ -104,6 +135,10 @@
         "mass": 5.6834E26,
         "radius": 58232,
         "texture": "saturn.jpeg",
+        "orbit": {
+            "color": "0xFDE910",
+            "thickness": 3
+        },
         "position": {
             "x": 6.406407240068813E+00, 
             "y": 6.569991342467073E+00, 
@@ -120,6 +155,10 @@
         "mass": 86.813E24,
         "radius": 25362,
         "texture": "uranus.jpeg",
+        "orbit": {
+            "color": "0xFFFFFF",
+            "thickness": 3
+        },
         "position": {
             "x": 1.443185872710435E+01,
             "y": -1.373431948593457E+01,
@@ -136,6 +175,10 @@
         "mass": 102.409E24,
         "radius": 24624,
         "texture": "neptune.jpeg",
+        "orbit": {
+            "color": "0x409FFF",
+            "thickness": 3
+        },
         "position": {
             "x": 1.681204733563333E+01,
             "y": -2.499176151791271E+01,

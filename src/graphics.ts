@@ -22,6 +22,9 @@ export class Graphics {
      * The label renderer. Used for 2D labels.
      */
     readonly labelRenderer: CSS2DRenderer;
+    /**
+     * Statistics of the simulation.
+     */
     readonly stats: Stats;
 
     /**
@@ -48,7 +51,7 @@ export class Graphics {
             this.scene.scale.multiplyScalar(scale);
 
         // Create a new perspective camera with 75 FOV and unlimited rendering distance
-        this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1e-3, 100); 
+        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1e-13, 100); 
         this.camera.position.copy(Graphics.INITIAL_CAMERA_POSITION);
 
         // Create a new WebGL renderer and append the canvas to the DOM
@@ -106,12 +109,24 @@ export class Graphics {
      */
     createBodyModel(radius: number, texture?: THREE.Texture): THREE.Mesh<THREE.SphereGeometry> {
         const geometry = new THREE.SphereGeometry(radius);
-        const material = new THREE.MeshBasicMaterial();
+        const material = new THREE.MeshBasicMaterial({ depthTest: false });
         // Add the texture to the material if specified
         if (texture !== undefined) 
             material.map = texture;
         return new THREE.Mesh(geometry, material);
     }  
+
+    createOrbitLine(position: THREE.Vector3, color?: number, thickness?: number): THREE.Line {
+        if (color === undefined)
+            color = 0xFFFFFF;
+        if (thickness === undefined)
+            thickness = 1;
+        const geometry = new THREE.BufferGeometry();
+        const vertices = new Float32Array([position.x, position.y, position.z]);
+        geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+        const material = new THREE.LineBasicMaterial( { color: color, linewidth: thickness, depthWrite: false });
+        return new THREE.Line(geometry, material);
+    }
 
     /**
      * Calls `.render()` to each object.
