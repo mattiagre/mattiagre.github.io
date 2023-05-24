@@ -1,1 +1,3 @@
-A dynamic Solar System simulator
+## A dynamic Solar System simulator
+
+Compile running `npm run build`.
