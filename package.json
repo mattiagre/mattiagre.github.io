@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "Mattia Gregnanin",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/dat.gui": "^0.7.10",
     "@types/three": "^0.152.0",

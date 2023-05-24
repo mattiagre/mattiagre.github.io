@@ -16,6 +16,9 @@ export interface Integrator {
 }
 
 class Verlet implements Integrator {
+    /**
+     * Previous time interval.
+     */
     #prevDt: number; 
 
     constructor(private gravityApplier: GravityApplierCallback) { }
@@ -24,8 +27,10 @@ class Verlet implements Integrator {
         // Initialize the previous time interval
         if (this.#prevDt === undefined)
             this.#prevDt = dt;
+
         // Apply gravity
         this.gravityApplier(bodies);
+
         bodies.forEach(body => {
             // Copy the body previous position
             const prevPosition = body.position.clone();
@@ -36,7 +41,8 @@ class Verlet implements Integrator {
             // Set the acceleration back to zero
             body.acceleration.set(0, 0, 0);
         });
-        // Update the time interval
+
+        // Update the previous time interval
         this.#prevDt = dt;
     }
 }
@@ -47,6 +53,7 @@ class Leapfrog implements Integrator {
     updatePositions(bodies: Body[], dt: number): void {
         // Apply gravity
         this.gravityApplier(bodies);
+
         // Compute v_{i + 1/2} and x_{i + 1}
         bodies.forEach(body => {
             body.velocity.add(body.acceleration.multiplyScalar(dt / 2));
@@ -54,8 +61,11 @@ class Leapfrog implements Integrator {
             // Set the acceleration to zero
             body.acceleration.set(0, 0, 0);
         });
-        // Compute v_{i + 1}
+
+        // Apply gravity for the second time
         this.gravityApplier(bodies);
+
+        // Compute v_{i + 1}
         bodies.forEach(body => {
             body.velocity.add(body.acceleration.multiplyScalar(dt / 2));
             // Set the acceleration to zero
@@ -66,15 +76,15 @@ class Leapfrog implements Integrator {
 
 class Yoshida implements Integrator {
 
-    static readonly OMEGA0 = -Math.cbrt(2) / (2 - Math.cbrt(2));
-    static readonly OMEGA1 = 1 / (2 - Math.cbrt(2));
-    static readonly C1 = this.OMEGA1 / 2;
-    static readonly C2 = (this.OMEGA0 + this.OMEGA1) / 2;
+    static readonly X0 = -Math.cbrt(2) / (2 - Math.cbrt(2));
+    static readonly X1 = 1 / (2 - Math.cbrt(2));
+    static readonly C1 = this.X1 / 2;
+    static readonly C2 = (this.X0 + this.X1) / 2;
     static readonly C3 = this.C2;
     static readonly C4 = this.C1;
-    static readonly D1 = this.OMEGA1;
-    static readonly D2 = this.OMEGA0;
-    static readonly D3 = this.OMEGA1;
+    static readonly D1 = this.X1;
+    static readonly D2 = this.X0;
+    static readonly D3 = this.X1;
 
     constructor(private gravityApplier: GravityApplierCallback) { }
 
@@ -144,7 +154,7 @@ export class Solver {
             for (let j = i + 1; j < bodies.length; j++) {
                 const displacement = bodies[i].position.clone().sub(bodies[j].position);
                 if (displacement.lengthSq() === 0)
-                    console.error('Two planets have the same position. Cannot compute the force between them.'); 
+                    console.error('Two bodies have the same position. Cannot compute the force between them.'); 
                 const force = displacement.divideScalar(Math.pow(displacement.lengthSq(), 1.5)).multiplyScalar(- AstroSystem.G_COSTANT * bodies[i].mass * bodies[j].mass);
                 bodies[i].applyForce(force);
                 bodies[j].applyForce(force.negate());
@@ -154,12 +164,14 @@ export class Solver {
 }
 
 /**
- * Uses the Stormer-Verlet method, with a local truncation error of O(dt^4), but global O(dt^2) error. Supports variable interval time dt.
+ * Uses the Stormer-Verlet method, with a local truncation error of O(dt^4), but global O(dt^2) error. Supports changing time interval.
  */
 export const VERLET_INTEGRATOR: Integrator = new Verlet(Solver.applyGravity);
 /**
- * Uses the Leapfrog method, with a global O(dt^2) error. Can go back in time and keeps the mechanical energy constant.
+ * Uses the Leapfrog method, with a global O(dt^2) error. Its symplectic nature keeps the mechanical energy constant.
  */
 export const LEAPFROG_INTEGRATOR: Integrator = new Leapfrog(Solver.applyGravity);
-
+/**
+ * Uses the fourth order simplectic integrator by Prof. Haruo Yoshida.
+ */
 export const YOSHIDA_INTEGRATOR: Integrator = new Yoshida(Solver.applyGravity);

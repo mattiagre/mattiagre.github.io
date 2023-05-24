@@ -1,0 +1,39 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{class}\PYG{+w}{ }\PYG{n+nx}{Verlet}\PYG{+w}{ }\PYG{k}{implements}\PYG{+w}{ }\PYG{n+nx}{Integrator}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * Previous time interval.}
+\PYG{c+cm}{	 */}
+\PYG{+w}{	}\PYG{err}{\PYGZsh{}}\PYG{n+nx}{prevDt}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{number}\PYG{p}{;}
+
+\PYG{+w}{	}\PYG{k+kr}{constructor}\PYG{p}{(}\PYG{k}{private}\PYG{+w}{ }\PYG{n+nx}{gravityApplier}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{GravityApplierCallback}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{	}\PYG{n+nx}{updatePositions}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{Body}\PYG{p}{[],}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{number}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{o+ow}{void}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{c+c1}{// Initialize the previous time interval}
+\PYG{+w}{		}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{err}{\PYGZsh{}}\PYG{n+nx}{prevDt}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{k+kc}{undefined}\PYG{p}{)}
+\PYG{+w}{			}\PYG{k}{this}\PYG{p}{.}\PYG{err}{\PYGZsh{}}\PYG{n+nx}{prevDt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{;}
+
+\PYG{+w}{		}\PYG{c+c1}{// Apply gravity}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{gravityApplier}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{p}{);}
+
+\PYG{+w}{		}\PYG{n+nx}{bodies}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{(}\PYG{n+nx}{body}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{c+c1}{// Copy the body previous position}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{prevPosition}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{position}\PYG{p}{.}\PYG{n+nx}{clone}\PYG{p}{();}
+\PYG{+w}{			}\PYG{c+c1}{// Compute the new position}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{position}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{clone}\PYG{p}{().}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{dt}\PYG{p}{))}
+\PYG{+w}{				}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{dt}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{dt}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{err}{\PYGZsh{}}\PYG{n+nx}{prevDt}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mf}{2}\PYG{p}{));}
+\PYG{+w}{			}\PYG{c+c1}{// Update the velocity}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{copy}\PYG{p}{(}\PYG{n+nx}{prevPosition}\PYG{p}{.}\PYG{n+nx}{sub}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{position}\PYG{p}{).}\PYG{n+nx}{divideScalar}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{			}\PYG{c+c1}{// Set the acceleration back to zero}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{);}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{});}
+
+\PYG{+w}{		}\PYG{c+c1}{// Update the previous time interval}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{err}{\PYGZsh{}}\PYG{n+nx}{prevDt}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{;}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Uses the Stormer\PYGZhy{}Verlet method, with a local truncation error of O(dt\PYGZca{}4), but global O(dt\PYGZca{}2) error. Supports changing time interval.}
+\PYG{c+cm}{ */}
+\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{VERLET\PYGZus{}INTEGRATOR}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{Integrator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{Verlet}\PYG{p}{(}\PYG{n+nx}{Solver}\PYG{p}{.}\PYG{n+nx}{applyGravity}\PYG{p}{);}
+\end{Verbatim}

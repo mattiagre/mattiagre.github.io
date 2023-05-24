@@ -1,0 +1,27 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Defines constants used by the astronomical system of units.}
+\PYG{c+cm}{ */}
+\PYG{k}{export}\PYG{+w}{ }\PYG{k+kr}{module}\PYG{+w}{ }\PYG{n+nx}{AstroSystem}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * Meters in an astronomical unit.}
+\PYG{c+cm}{	 */}
+\PYG{+w}{	}\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{AU}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{149597870707}\PYG{p}{;}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * Seconds in a day.}
+\PYG{c+cm}{	 */}
+\PYG{+w}{	}\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{DAY}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{86400}\PYG{p}{;}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * Seconds in a sidereal day.}
+\PYG{c+cm}{	 */}
+\PYG{+w}{	}\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{SIDEREAL\PYGZus{}DAY}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{86164.0905}\PYG{p}{;}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * The mass of the Earth (in kg) as revised May 9, 2022, by NASA JPL (https://ssd.jpl.nasa.gov).}
+\PYG{c+cm}{	 */}
+\PYG{+w}{	}\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{EARTH\PYGZus{}MASS}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{5.97219e24}\PYG{p}{;}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	 * The universal gravitational interaction constant in the astronomical system of units.}
+\PYG{c+cm}{	 */}
+\PYG{+w}{	}\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{G\PYGZus{}COSTANT}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{6.67428e\PYGZhy{}11}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{EARTH\PYGZus{}MASS}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{DAY}\PYG{+w}{ }\PYG{o}{**}\PYG{+w}{ }\PYG{l+m+mf}{2}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{n+nx}{AU}\PYG{+w}{ }\PYG{o}{**}\PYG{+w}{ }\PYG{l+m+mf}{3}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

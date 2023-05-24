@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}name\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Earth\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}mass\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{5.97219E24}\PYG{p}{,}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}radius\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{6371}\PYG{p}{,}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}texture\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}earth.jpeg\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}orbit\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}color\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}0x228B22\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}thickness\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{3}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{},}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}position\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}x\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.771478822733411E\PYGZhy{}01}\PYG{p}{,}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}y\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{9.672393401210591E\PYGZhy{}01}\PYG{p}{,}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}z\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{4.085203551709195E\PYGZhy{}06}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{},}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}velocity\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}x\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{1.720758492418282E\PYGZhy{}02}\PYG{p}{,}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}y\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{3.159006535002814E\PYGZhy{}03}\PYG{p}{,}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}z\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{1.050908513009135E\PYGZhy{}07}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{},}
+\PYG{+w}{	}\PYG{l+s+s2}{\PYGZdq{}rotation\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}obliquity\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{23.4392911}\PYG{p}{,}
+\PYG{+w}{		}\PYG{l+s+s2}{\PYGZdq{}period\PYGZdq{}}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{86164.0905}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}\PYG{+w}{	}
+\end{Verbatim}

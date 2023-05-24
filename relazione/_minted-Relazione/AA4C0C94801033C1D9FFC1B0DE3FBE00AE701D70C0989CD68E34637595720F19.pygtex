@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{static}\PYG{+w}{ }\PYG{n+nx}{applyGravity}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{Body}\PYG{p}{[])}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nx}{bodies}\PYG{p}{.}\PYG{n+nx}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kd}{let}\PYG{+w}{ }\PYG{n+nx}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{i}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n+nx}{bodies}\PYG{p}{.}\PYG{n+nx}{length}\PYG{p}{;}\PYG{+w}{ }\PYG{n+nx}{j}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{displacement}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{bodies}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{].}\PYG{n+nx}{position}\PYG{p}{.}\PYG{n+nx}{clone}\PYG{p}{().}\PYG{n+nx}{sub}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{p}{[}\PYG{n+nx}{j}\PYG{p}{].}\PYG{n+nx}{position}\PYG{p}{);}
+\PYG{+w}{			}\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{displacement}\PYG{p}{.}\PYG{n+nx}{lengthSq}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{)}
+\PYG{+w}{				}\PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{error}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Two bodies have the same position. Cannot compute the force between them.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{			}\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{force}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{displacement}\PYG{p}{.}\PYG{n+nx}{divideScalar}\PYG{p}{(}\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{pow}\PYG{p}{(}\PYG{n+nx}{displacement}\PYG{p}{.}\PYG{n+nx}{lengthSq}\PYG{p}{(),}\PYG{+w}{ }\PYG{l+m+mf}{1.5}\PYG{p}{)).}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nx}{AstroSystem}\PYG{p}{.}\PYG{n+nx}{G\PYGZus{}COSTANT}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{bodies}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{].}\PYG{n+nx}{mass}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{bodies}\PYG{p}{[}\PYG{n+nx}{j}\PYG{p}{].}\PYG{n+nx}{mass}\PYG{p}{);}
+\PYG{+w}{			}\PYG{n+nx}{bodies}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{].}\PYG{n+nx}{applyForce}\PYG{p}{(}\PYG{n+nx}{force}\PYG{p}{);}
+\PYG{+w}{			}\PYG{n+nx}{bodies}\PYG{p}{[}\PYG{n+nx}{j}\PYG{p}{].}\PYG{n+nx}{applyForce}\PYG{p}{(}\PYG{n+nx}{force}\PYG{p}{.}\PYG{n+nx}{negate}\PYG{p}{());}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

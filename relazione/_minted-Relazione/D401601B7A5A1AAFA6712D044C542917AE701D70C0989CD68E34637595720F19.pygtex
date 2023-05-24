@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/**}
+\PYG{c+cm}{* Contains useful informations about the rotation of a body.}
+\PYG{c+cm}{*/}
+\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{class}\PYG{+w}{ }\PYG{n+nx}{BodyRotation}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	* The angle (in degrees) that the rotation axis makes with the perpendicular to the ecliptic.}
+\PYG{c+cm}{	*/}
+\PYG{+w}{	}\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{obliquity}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{number}\PYG{p}{;}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	* The rotational period, in seconds.}
+\PYG{c+cm}{	*/}
+\PYG{+w}{	}\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{period}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{number}\PYG{p}{;}
+\PYG{+w}{	}\PYG{c+cm}{/**}
+\PYG{c+cm}{	* The axis of rotation. Its length is guaranteed to be one.}
+\PYG{c+cm}{	*/}
+\PYG{+w}{	}\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{axis}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{THREE.Vector3}\PYG{p}{;}
+
+\PYG{+w}{	}\PYG{k+kr}{constructor}\PYG{p}{(}\PYG{n+nx}{obliquity}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{number}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{period}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{number}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{obliquity}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{obliquity}\PYG{p}{;}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{period}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{period}\PYG{p}{;}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{axis}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{THREE}\PYG{p}{.}\PYG{n+nx}{Vector3}\PYG{p}{(}\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{sin}\PYG{p}{(}\PYG{n+nx}{obliquity}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{PI}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mf}{180}\PYG{p}{),}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{cos}\PYG{p}{(}\PYG{n+nx}{obliquity}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{PI}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mf}{180}\PYG{p}{),}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{);}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

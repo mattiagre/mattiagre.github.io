@@ -51,7 +51,7 @@ export class Graphics {
             this.scene.scale.multiplyScalar(scale);
 
         // Create a new perspective camera with 75 FOV and unlimited rendering distance
-        this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1e-13, 100); 
+        this.camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1e-13, 500); 
         this.camera.position.copy(Graphics.INITIAL_CAMERA_POSITION);
 
         // Create a new WebGL renderer and append the canvas to the DOM
@@ -78,7 +78,7 @@ export class Graphics {
         });
 
         // Add a debug grid helper
-        this.scene.add(new THREE.GridHelper(60, 150));
+        // this.scene.add(new THREE.GridHelper(60, 150));
 
         // Add the stats 
         this.stats = new Stats();
@@ -109,7 +109,7 @@ export class Graphics {
      */
     createBodyModel(radius: number, texture?: THREE.Texture): THREE.Mesh<THREE.SphereGeometry> {
         const geometry = new THREE.SphereGeometry(radius);
-        const material = new THREE.MeshBasicMaterial({ depthTest: false });
+        const material = new THREE.MeshBasicMaterial();
         // Add the texture to the material if specified
         if (texture !== undefined) 
             material.map = texture;
@@ -124,8 +124,10 @@ export class Graphics {
         const geometry = new THREE.BufferGeometry();
         const vertices = new Float32Array([position.x, position.y, position.z]);
         geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-        const material = new THREE.LineBasicMaterial( { color: color, linewidth: thickness, depthWrite: false });
-        return new THREE.Line(geometry, material);
+        const material = new THREE.LineBasicMaterial( { color: color, linewidth: thickness });
+        const orbit = new THREE.Line(geometry, material);
+        orbit.frustumCulled = false;
+        return orbit;
     }
 
     /**

@@ -1,0 +1,49 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{class}\PYG{+w}{ }\PYG{n+nx}{Yoshida}\PYG{+w}{ }\PYG{k}{implements}\PYG{+w}{ }\PYG{n+nx}{Integrator}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{X0}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{cbrt}\PYG{p}{(}\PYG{l+m+mf}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{2}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{cbrt}\PYG{p}{(}\PYG{l+m+mf}{2}\PYG{p}{));}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{X1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mf}{1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mf}{2}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n+nb}{Math}\PYG{p}{.}\PYG{n+nx}{cbrt}\PYG{p}{(}\PYG{l+m+mf}{2}\PYG{p}{));}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{C1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{X1}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mf}{2}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{C2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{X0}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{X1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{l+m+mf}{2}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{C3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{C2}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{C4}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{C1}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{D1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{X1}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{D2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{X0}\PYG{p}{;}
+\PYG{+w}{	}\PYG{k}{static}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n+nx}{D3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{X1}\PYG{p}{;}
+
+\PYG{+w}{	}\PYG{k+kr}{constructor}\PYG{p}{(}\PYG{k}{private}\PYG{+w}{ }\PYG{n+nx}{gravityApplier}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{GravityApplierCallback}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{	}\PYG{n+nx}{updatePositions}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{Body}\PYG{p}{[],}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{number}\PYG{p}{)}\PYG{o}{:}\PYG{+w}{ }\PYG{o+ow}{void}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{c+c1}{// First iteration}
+\PYG{+w}{		}\PYG{n+nx}{bodies}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{(}\PYG{n+nx}{body}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{position}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{clone}\PYG{p}{().}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{Yoshida}\PYG{p}{.}\PYG{n+nx}{C1}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{});}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{gravityApplier}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{p}{);}
+\PYG{+w}{		}\PYG{c+c1}{// Second iteration}
+\PYG{+w}{		}\PYG{n+nx}{bodies}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{(}\PYG{n+nx}{body}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{Yoshida}\PYG{p}{.}\PYG{n+nx}{D1}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{);}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{position}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{clone}\PYG{p}{().}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{Yoshida}\PYG{p}{.}\PYG{n+nx}{C2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{});}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{gravityApplier}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{p}{);}
+\PYG{+w}{		}\PYG{c+c1}{// Third iteration}
+\PYG{+w}{		}\PYG{n+nx}{bodies}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{(}\PYG{n+nx}{body}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{Yoshida}\PYG{p}{.}\PYG{n+nx}{D2}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{);}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{position}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{clone}\PYG{p}{().}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{Yoshida}\PYG{p}{.}\PYG{n+nx}{C3}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{});}
+\PYG{+w}{		}\PYG{k}{this}\PYG{p}{.}\PYG{n+nx}{gravityApplier}\PYG{p}{(}\PYG{n+nx}{bodies}\PYG{p}{);}
+\PYG{+w}{		}\PYG{c+c1}{// Fourth iteration}
+\PYG{+w}{		}\PYG{n+nx}{bodies}\PYG{p}{.}\PYG{n+nx}{forEach}\PYG{p}{(}\PYG{n+nx}{body}\PYG{+w}{ }\PYG{p}{=\PYGZgt{}}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{Yoshida}\PYG{p}{.}\PYG{n+nx}{D3}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{acceleration}\PYG{p}{.}\PYG{n+nx}{set}\PYG{p}{(}\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{0}\PYG{p}{);}
+\PYG{+w}{			}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{position}\PYG{p}{.}\PYG{n+nx}{add}\PYG{p}{(}\PYG{n+nx}{body}\PYG{p}{.}\PYG{n+nx}{velocity}\PYG{p}{.}\PYG{n+nx}{clone}\PYG{p}{().}\PYG{n+nx}{multiplyScalar}\PYG{p}{(}\PYG{n+nx}{Yoshida}\PYG{p}{.}\PYG{n+nx}{C4}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n+nx}{dt}\PYG{p}{));}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{});}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{c+cm}{/**}
+\PYG{c+cm}{ * Uses the fourth order simplectic integrator by Prof. Haruo Yoshida.}
+\PYG{c+cm}{ */}
+\PYG{k}{export}\PYG{+w}{ }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{YOSHIDA\PYGZus{}INTEGRATOR}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kt}{Integrator}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{Yoshida}\PYG{p}{(}\PYG{n+nx}{Solver}\PYG{p}{.}\PYG{n+nx}{applyGravity}\PYG{p}{);}
+\end{Verbatim}

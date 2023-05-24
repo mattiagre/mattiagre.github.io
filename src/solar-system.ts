@@ -44,6 +44,7 @@ export class SolarSystem {
         integrator: 'Yoshida',
         orbitsDensity: 1
     }
+    #cameraTarget: THREE.Object3D = undefined;
 
     /**
      * Initial date used in the simulation.
@@ -77,12 +78,28 @@ export class SolarSystem {
         this.gui = new Dat.GUI();
         const simulationFolder = this.gui.addFolder('Simulation');
         simulationFolder.add(this.#guiControls, 'running').name('Running');
-        simulationFolder.add(this.#guiControls, 'speed', ['0.25x', '0.5x', '1x', '2x', '4x', '10x']).name('Speed');
+        simulationFolder.add(this.#guiControls, 'speed', ['-1x', '0.25x', '0.5x', '1x', '2x', '4x', '10x']).name('Speed');
         simulationFolder.add(this.#guiControls, 'integrator', ['Verlet', 'LeapFrog', 'Yoshida']).name('Integrator');
         simulationFolder.add(this.solver, 'nSubIteration', 1, 10, 1).name('Sub iterations');
         const orbitsFolder = this.gui.addFolder('Orbits');
         orbitsFolder.add(this.#guiControls, 'orbitsDensity', 0.1, 1).name('Density');
-        orbitsFolder.add(Body, 'ORBITS_MAX_VERTEX', 200, 2_000, 10).name('Max vertex');
+        orbitsFolder.add(Body, 'ORBITS_MAX_VERTEX', 100, 10_000, 10).name('Max vertex');
+
+        // Add the click event listener 
+        const rendererDom = this.graphics.labelRenderer.domElement;
+        rendererDom.addEventListener('click', event => {
+            const mouse = new THREE.Vector2(
+                (event.clientX / rendererDom.clientWidth) * 2 - 1, 
+                -(event.clientY / rendererDom.clientHeight) * 2 + 1
+            );
+            const raycaster = new THREE.Raycaster();
+            raycaster.setFromCamera(mouse, this.graphics.camera);
+            const intersects = raycaster.intersectObjects(this.bodies.map(body => body.model));
+            if (intersects.length > 0) {
+                this.#cameraTarget = intersects[0].object;
+                // this.cameraControls.maxDistance = (<THREE.Mesh<THREE.SphereGeometry>>this.#cameraTarget).geometry.parameters.radius * 10;
+            }
+        });
     }
 
     /**
@@ -161,12 +178,19 @@ export class SolarSystem {
     readonly animate = () => {
         this.#requestHandle = window.requestAnimationFrame(this.animate);
 
+        if (this.#cameraTarget !== undefined) {
+            this.cameraControls.target = this.#cameraTarget.position;
+            this.cameraControls.update();
+        }
         this.graphics.render();
         this.dateDiv.textContent = 'Epoch: ' + addMilliseconds(SolarSystem.INITIAL_DATE, this.solver.elapsedTime).toLocaleString();
 
         // Change the speed of the simulation
         let multiplier: number;
         switch (this.#guiControls.speed) {
+            case '-1x': 
+                multiplier = -1;
+                break;
             case '0.25x':
                 multiplier = 0.25;
                 break;
