@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.8)  21 MAY 2023 16:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.8)  29 MAY 2023 17:50
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -569,7 +569,9 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip59
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/minted/minted.sty
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 24.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/minted/minted.sty
 Package: minted 2022/12/12 v2.7 Yet another Pygments shim for LaTeX
  (/usr/local/texlive/2023/texmf-dist/tex/latex/fvextra/fvextra.sty
 Package: fvextra 2022/11/30 v1.5 fvextra - extensions and patches for fancyvrb
@@ -1258,12 +1260,12 @@ Package microtype Info: Loading configuration file microtype.cfg.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
 File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
 ))
-LaTeX Font Info:    Trying to load font information for T1+zplTLF on input line 46.
+LaTeX Font Info:    Trying to load font information for T1+zplTLF on input line 48.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/newpx/t1zpltlf.fd
 File: t1zpltlf.fd 2021/05/25 v1.0 font definition file for T1/zpl/TLF
 )
 LaTeX Font Info:    Font shape `T1/zplTLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 46.
+(Font)              scaled to size 10.95pt on input line 48.
 runsystem(which pygmentize && touch Relazione.aex)...executed.
 
 runsystem(rm Relazione.aex)...executed.
@@ -1275,36 +1277,36 @@ Package csquotes Info: Redefining alias 'default' -> 'italian'.
  (./Relazione.aux)
 \openout1 = `Relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for LS1/libertinust1math/m/n on input line 46.
-LaTeX Font Info:    Trying to load font information for LS1+libertinust1math on input line 46.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for LS1/libertinust1math/m/n on input line 48.
+LaTeX Font Info:    Trying to load font information for LS1+libertinust1math on input line 48.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/libertinust1math/ls1libertinust1math.fd
 File: ls1libertinust1math.fd 2016/03/23 Fontinst v1.933 font definitions for LS1/libertinust1math.
 )
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for LS2/libertinust1mathsym/m/n on input line 46.
-LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathsym on input line 46.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for LS2/libertinust1mathsym/m/n on input line 48.
+LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathsym on input line 48.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/libertinust1math/ls2libertinust1mathsym.fd
 File: ls2libertinust1mathsym.fd 2015/04/17 v1.1.2-latex LibertinusT1Mathsym LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1340,18 +1342,18 @@ LaTeX Font Info:    ... okay on input line 46.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \it@ocap on input line 46.
-LaTeX Info: Redefining \it@ccap on input line 46.
+LaTeX Info: Redefining \it@ocap on input line 48.
+LaTeX Info: Redefining \it@ccap on input line 48.
 \c@mv@tabular=\count512
 \c@mv@boldtabular=\count513
-LaTeX Info: Command `\dddot' is already robust on input line 46.
-LaTeX Info: Command `\ddddot' is already robust on input line 46.
-Package translations Info: no dictionary file `translations-basic-dictionary-italian.trsl' found. on input line 46.
+LaTeX Info: Command `\dddot' is already robust on input line 48.
+LaTeX Info: Command `\ddddot' is already robust on input line 48.
+Package translations Info: no dictionary file `translations-basic-dictionary-italian.trsl' found. on input line 48.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 46.
-Package hyperref Info: Link coloring OFF on input line 46.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 48.
+Package hyperref Info: Link coloring ON on input line 48.
  (./Relazione.out) (./Relazione.out)
 \@outlinefile=\write7
 \openout7 = `Relazione.out'.
@@ -1394,21 +1396,21 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Relazione.bbl' found.
  (./Relazione.bbl)
-Package biblatex Info: Reference section=0 on input line 46.
-Package biblatex Info: Reference segment=0 on input line 46.
-LaTeX Info: Redefining \microtypecontext on input line 46.
-Package microtype Info: Applying patch `item' on input line 46.
-Package microtype Info: Applying patch `toc' on input line 46.
-Package microtype Info: Applying patch `eqnum' on input line 46.
-Package microtype Info: Applying patch `footnote' on input line 46.
-Package microtype Info: Applying patch `verbatim' on input line 46.
+Package biblatex Info: Reference section=0 on input line 48.
+Package biblatex Info: Reference segment=0 on input line 48.
+LaTeX Info: Redefining \microtypecontext on input line 48.
+Package microtype Info: Applying patch `item' on input line 48.
+Package microtype Info: Applying patch `toc' on input line 48.
+Package microtype Info: Applying patch `eqnum' on input line 48.
+Package microtype Info: Applying patch `footnote' on input line 48.
+Package microtype Info: Applying patch `verbatim' on input line 48.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 46.
+LaTeX Info: Redefining \showhyphens on input line 48.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1416,47 +1418,66 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zplTLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
+ (./Titolo.tex
 LaTeX Font Info:    Font shape `T1/zplTLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 48.
+(Font)              scaled to size 17.28pt on input line 6.
+LaTeX Font Info:    Font shape `T1/zplTLF/b/n' will be
+(Font)              scaled to size 17.28pt on input line 7.
+LaTeX Font Info:    Font shape `T1/zplTLF/b/sc' will be
+(Font)              scaled to size 17.28pt on input line 15.
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/zplTLF/b/sc/17.28'.
+(microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `T1/zplTLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 48.
-LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathex on input line 48.
+(Font)              scaled to size 14.4pt on input line 16.
+LaTeX Font Info:    Font shape `T1/zplTLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 20.
+LaTeX Font Info:    Font shape `T1/zplTLF/m/sc' will be
+(Font)              scaled to size 14.4pt on input line 21.
+Package microtype Info: Character `029' is missing
+(microtype)             in font `T1/zplTLF/m/sc/14.4'.
+(microtype)             Ignoring protrusion settings for this character.
+LaTeX Font Info:    Font shape `T1/zplTLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 23.
+<figures//unipd.png, id=111, 803.0pt x 228.855pt>
+File: figures//unipd.png Graphic file (type png)
+<use figures//unipd.png>
+Package pdftex.def Info: figures//unipd.png  used on input line 25.
+(pdftex.def)             Requested size: 227.62204pt x 64.87164pt.
+ [1
+
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc} <./figures//unipd.png>]) (./Relazione.toc
+Package cleveref Info: loaded `italian' language definitions on input line 1.
+Package cleveref Info: loaded `italian' language definitions on input line 2.
+LaTeX Font Info:    Font shape `T1/zplTLF/b/n' will be
+(Font)              scaled to size 10.95pt on input line 3.
+LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathex on input line 4.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/libertinust1math/ls2libertinust1mathex.fd
 File: ls2libertinust1mathex.fd 2016/03/15 v1.0.0-latex LibertinusMath extensions LS2 font definitions
 )
-LaTeX Font Info:    Trying to load font information for LS1+libertinust1mathbb on input line 48.
+LaTeX Font Info:    Trying to load font information for LS1+libertinust1mathbb on input line 4.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/libertinust1math/ls1libertinust1mathbb.fd
 File: ls1libertinust1mathbb.fd 2016/08/22 latex LibertinusT1Mathbb LS1 font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 48.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-LaTeX Font Info:    Font shape `T1/zplTLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 49.
-LaTeX Font Info:    Font shape `T1/zplTLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 49.
- (./Relazione.toc
-Package cleveref Info: loaded `italian' language definitions on input line 1.
-Package cleveref Info: loaded `italian' language definitions on input line 2.
-LaTeX Font Info:    Font shape `T1/zplTLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 3.
-)
+))
 \tf@toc=\write8
 \openout8 = `Relazione.toc'.
 
 LaTeX Font Info:    Font shape `T1/zplTLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 53.
+(Font)              scaled to size 10.95pt on input line 55.
 LaTeX Font Info:    Font shape `T1/zplTLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 59.
+(Font)              scaled to size 12.0pt on input line 61.
 \openout4 = `Relazione.pyg'.
 
  (./_minted-Relazione/default.pygstyle) (./_minted-Relazione/17CD5C7522247A61BA4439E6FDC1E0B80DC9BC31546CADCD1C24789D852FDD5B.pygtex
@@ -1476,9 +1497,7 @@ Package microtype Info: Loading generic protrusion settings for font family
  (./_minted-Relazione/B2EFF2BF28D662CBD19B0BCBB103CAC00DC9BC31546CADCD1C24789D852FDD5B.pygtex)
 \openout4 = `Relazione.pyg'.
 
- (./_minted-Relazione/B2EFF2BF28D662CBD19B0BCBB103CAC00DC9BC31546CADCD1C24789D852FDD5B.pygtex) [1
-
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}]
+ (./_minted-Relazione/B2EFF2BF28D662CBD19B0BCBB103CAC00DC9BC31546CADCD1C24789D852FDD5B.pygtex)
 \openout4 = `Relazione.pyg'.
 
  (./_minted-Relazione/85F230E1A50AA64F0CD3AD44FFF2CFAB0DC9BC31546CADCD1C24789D852FDD5B.pygtex)
@@ -1494,6 +1513,11 @@ Package microtype Info: Loading generic protrusion settings for font family
 \openout4 = `Relazione.pyg'.
 
  (./_minted-Relazione/EC0CAE8A882003D2E24C9942418CD4950DC9BC31546CADCD1C24789D852FDD5B.pygtex)
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.74     \begin{equation}
+                          [1]
 \openout3 = `Relazione.pyg'.
 
  (./_minted-Relazione/AA4C0C94801033C1D9FFC1B0DE3FBE00AE701D70C0989CD68E34637595720F19.pygtex
@@ -1521,21 +1545,21 @@ LaTeX Font Info:    Font shape `T1/npxtt/m/n' will be
  (./_minted-Relazione/CF9885D0684DF907ECDEBB90C83BECAB0DC9BC31546CADCD1C24789D852FDD5B.pygtex)
 \openout4 = `Relazione.pyg'.
 
- (./_minted-Relazione/8541D7847C49FEFA3FEFF40AAACF9EB70DC9BC31546CADCD1C24789D852FDD5B.pygtex) [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusBMR.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}] [3]
-LaTeX Font Info:    Trying to load font information for T1+zplsups on input line 160.
+ (./_minted-Relazione/8541D7847C49FEFA3FEFF40AAACF9EB70DC9BC31546CADCD1C24789D852FDD5B.pygtex) [2{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusBMR.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusEX.enc}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/libertinust1math/libusSYM.enc}]
+LaTeX Font Info:    Trying to load font information for T1+zplsups on input line 162.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/newpx/t1zplsups.fd
 File: t1zplsups.fd 2015/01/17 v1.0
 )
 LaTeX Font Info:    Font shape `T1/zplsups/m/n' will be
-(Font)              scaled to size 10.95pt on input line 160.
+(Font)              scaled to size 10.95pt on input line 162.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zplsups' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/zplTLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 160.
+(Font)              scaled to size 9.0pt on input line 162.
 LaTeX Font Info:    Font shape `T1/zplsups/m/n' will be
-(Font)              scaled to size 9.0pt on input line 160.
+(Font)              scaled to size 9.0pt on input line 162.
 \openout4 = `Relazione.pyg'.
 
  (./_minted-Relazione/F12D8793C7F2CD23BB1A722775BEE3FC0DC9BC31546CADCD1C24789D852FDD5B.pygtex
@@ -1543,7 +1567,8 @@ LaTeX Font Info:    Font shape `T1/npxtt/m/n' will be
 (Font)              scaled to size 9.0pt on input line 3.
 )
 LaTeX Font Info:    Font shape `T1/zplTLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 160.
+(Font)              scaled to size 9.0pt on input line 162.
+ [3]
 \openout4 = `Relazione.pyg'.
 
  (./_minted-Relazione/2CD3444D5D9B8011E9AD07CA35153E420DC9BC31546CADCD1C24789D852FDD5B.pygtex)
@@ -1617,19 +1642,29 @@ LaTeX Font Info:    Font shape `T1/npxtt/bx/n' will be
 \openout4 = `Relazione.pyg'.
 
  (./_minted-Relazione/609E753CAA02104784ED32D6CDC926B50DC9BC31546CADCD1C24789D852FDD5B.pygtex)
-<figures//simulation_inner_planets.jpg, id=212, 1443.89438pt x 821.0675pt>
+<figures//simulation_three_bodies.png, id=219, 1445.4pt x 785.93625pt>
+File: figures//simulation_three_bodies.png Graphic file (type png)
+<use figures//simulation_three_bodies.png>
+Package pdftex.def Info: figures//simulation_three_bodies.png  used on input line 491.
+(pdftex.def)             Requested size: 455.24408pt x 247.53525pt.
+<figures//simulation_inner_planets.jpg, id=220, 1443.89438pt x 821.0675pt>
 File: figures//simulation_inner_planets.jpg Graphic file (type jpg)
 <use figures//simulation_inner_planets.jpg>
-Package pdftex.def Info: figures//simulation_inner_planets.jpg  used on input line 489.
+Package pdftex.def Info: figures//simulation_inner_planets.jpg  used on input line 497.
 (pdftex.def)             Requested size: 455.24408pt x 258.87567pt.
  [10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.497 	T
-        ra le modifiche più rilevanti che nel futuro verranno implementate ... <./figures//simulation_inner_planets.jpg>] [11] (./Relazione.aux
-Package cleveref Info: loaded `italian' language definitions on input line 21.
-Package cleveref Info: loaded `italian' language definitions on input line 22.
+l.500 
+       <./figures//simulation_three_bodies.png>] [11
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.513 \end{document}
+                     <./figures//simulation_inner_planets.jpg>] (./Relazione.aux
+Package cleveref Info: loaded `italian' language definitions on input line 19.
+Package cleveref Info: loaded `italian' language definitions on input line 20.
 )
 Package rerunfilecheck Info: File `Relazione.out' has not changed.
 (rerunfilecheck)             Checksum: CD2CEE3D6C9596955BAFF56E2A143F93;3493.
@@ -1640,18 +1675,18 @@ Package logreq Info: Writing requests to 'Relazione.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 49188 strings out of 476047
- 1039405 string characters out of 5790248
+ 49234 strings out of 476047
+ 1040391 string characters out of 5790248
  1874248 words of memory out of 5000000
- 68661 multiletter control sequences out of 15000+600000
- 575952 words of font info for 150 fonts, out of 8000000 for 9000
+ 68685 multiletter control sequences out of 15000+600000
+ 581977 words of font info for 151 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 101i,13n,104p,1058b,1634s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,13n,104p,1058b,1654s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newpx/npxsups-Regular.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newpx/zplb.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newpx/zplr.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/newpx/zplri.pfb>
-Output written on Relazione.pdf (11 pages, 850875 bytes).
+Output written on Relazione.pdf (12 pages, 2025147 bytes).
 PDF statistics:
- 300 PDF objects out of 1000 (max. 8388607)
- 237 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
- 27434 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 316 PDF objects out of 1000 (max. 8388607)
+ 246 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 33588 words of extra memory for PDF output out of 35830 (max. 10000000)
 

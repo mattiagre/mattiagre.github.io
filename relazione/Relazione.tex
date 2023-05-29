@@ -1,5 +1,4 @@
 \documentclass[11pt]{article}
-
 \usepackage[a4paper,total={16cm,26cm}]{geometry}
 
 % Pacchetti per la gestione dell'encoding
@@ -18,12 +17,19 @@
 \usepackage{siunitx}
 
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue!80!cyan!80!black,
+	citecolor = green!50!black
+}
 \usepackage{minted}
 \usepackage[italian]{cleveref}
+
 \usepackage{tcolorbox}
 \tcbuselibrary{most}
 \usepackage{graphicx}
 \graphicspath{{figures/}}
+\usepackage{float}
 
 \usepackage{csquotes}
 \usepackage{biblatex}
@@ -39,12 +45,8 @@
    \ifblank{#1}{\:\cdot\:}{#1}
 }
 
-\title{Progettazione e sviluppo di un\\simulatore del Sistema Solare}
-\author{Mattia Gregnanin}
-\date{\today}
-
 \begin{document}
-    \maketitle
+    \input{Titolo}
 
     \tableofcontents
 
@@ -52,13 +54,13 @@
 
     Lo scopo di questo documento è quello d'illustrare la progettazione di un motore fisico e l'implementazione di un motore grafico per un simulatore del Sistema Solare con la caratteristica di essere \emph{dinamico}, ovverosia capace di studiare l'evoluzione di un qualsiasi numero di pianeti e oggetti celesti. 
 	
-	Ad esempio, si potrebbe studiare il comportamento di un satellite attorno alla Terra con la sola Terra in gioco, oppure considerando anche gli effetti dovuti alla presenza della Luna e del Sole. Tutti i corpi possono essere caricati tramite un file JSON che ne specifica posizione e velocità iniziali e, inoltre, eventualmente dotati di una rotazione propria.
+	Ad esempio, si potrebbe studiare il comportamento di un satellite attorno alla Terra con la sola Terra in gioco, oppure considerando anche gli effetti dovuti alla presenza della Luna, del Sole e di altri oggetti celesti. Tutti i corpi possono essere caricati, infatti, tramite un file JSON che ne specifica posizione e velocità iniziali ed eventualmente la rotazione propria.
 
-	Si noti però che tutti i corpi sono rappresentati in forma perfettamente sferica, con l'intera massa concentrata al centro, e si trascurano effetti dovuti al fatto che i corpi rotanti sono schiacciati ai poli o altri fenomeni di perturbazione.
+	Si noti però che, nella \emph{build} attuale, tutti i corpi sono rappresentati in forma perfettamente sferica, con l'intera massa concentrata al centro e se ne trascurano effetti dovuti al fatto che la rotazione comporta uno schiacciamento ai poli o, in generale, altri fenomeni di perturbazione.
 
 	\subsection{Linguaggi e librerie utilizzati}
 
-    Per questo progetto è stato utilizzato il linguaggio di programmazione \mintinline{ts}{TypeScript}, derivato dal più noto \mintinline{ts}{JavaScript} e che introduce una maggiore tipizzazione\cite{TypeScript}. Ciò ha permesso al simulatore di essere una ``\foreignlanguage{english}{web-app}'' e di poter essere eseguito da qualsiasi dispositivo dotato di un browser che esegue codice \mintinline{ts}{JavaScript}, semplicemente visitando la pagina \url{https://mattiagre.github.io/public}. 
+    Per questo progetto è stato utilizzato il linguaggio di programmazione \mintinline{ts}{TypeScript}, derivato dal più noto \mintinline{ts}{JavaScript} e che introduce una maggiore tipizzazione\cite{TypeScript}. Ciò ha permesso al simulatore di essere una ``\foreignlanguage{english}{web-app}'' e di poter essere eseguito da qualsiasi dispositivo dotato di un browser che esegue codice \mintinline{ts}{JavaScript}. Visitando la pagina \url{https://mattiagre.github.io/public} si potrà osservare una simulazione dei principali pianeti del sistema solare e della Luna.
 
     Come motore grafico è stata utilizzata la libreria \foreignlanguage{english}{open source} \mintinline{ts}{Three.js}, disponibile al sito \url{https://threejs.org} e che mette già a disposizione strumenti matematici utili come le classi \mintinline{ts}{Vector3}, \mintinline{ts}{Matrix3}, \mintinline{ts}{Quaternion}, ecc\textellipsis. 
 
@@ -484,21 +486,27 @@
 
 	\section{Esempi di simulazione}
 
-	\begin{figure}[htp]
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\linewidth]{simulation_inner_planets.jpg}
+		\includegraphics[width=\linewidth]{simulation_three_bodies}
+		\caption{Simulazione del problema dei tre corpi.}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{simulation_inner_planets}
 		\caption{Simulazione dei pianeti interni e della Luna.}
 	\end{figure}
 
 	\section{Sviluppi futuri}
 
-	Il codice postato in questo documento è soggetto a revisione costante e potrebbe cambiare da un momento all'altro, per risolvere bug o aggiungere funzionalità.
+	Il codice pubblicato in questo documento è soggetto a continua revisione e potrebbe cambiare in qualsiasi momento, al fine di aggiungere funzionalità o risolvere bug.
 
 	Tra le modifiche più rilevanti che nel futuro verranno implementate vi è l'algoritmo di Barnes-Hut, che permette di calcolare le accelerazioni dei corpi con una complessità pari a $O(N\log{N})$, invece del corrente $O(N^2)$.
 
 	Risulterebbe anche interessante poter lanciare dei satelliti da un pianeta direttamente dalla simulazione, selezionando latitudine e longitudine del punto di lancio e poi il beta angle.
 
-	Infine, poiché la simulazione inizia sempre il 1 gennaio 2000, si può aggiungere la possibilità di cambiare data, sia avanti che indietro nel tempo, senza dover attendere che la simulazione la raggiunga.
+	Infine, poiché la simulazione inizia sempre il 1 gennaio 2000, si potrebbe aggiungere la possibilità di cambiare data, sia avanti che indietro nel tempo, senza dover attendere che la simulazione la raggiunga manualmente.
 
 	\printbibliography
 
