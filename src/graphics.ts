@@ -42,7 +42,7 @@ export class Graphics {
 
     /**
      * Constructs and appends to the body the renderers' DOM elements and sets an handler to the "resize" window event.
-     * @param scale If specified, the scale used by the rendering scene. Each AU will be rendered with that size.
+     * @param scale If specified, the scale used by the rendering scene. Each AU will be rendered with that screen size.
      */
     constructor(scale?: number) {
         // Create a new scene
@@ -50,12 +50,12 @@ export class Graphics {
         if (scale !== undefined)
             this.scene.scale.multiplyScalar(scale);
 
-        // Create a new perspective camera with 75 FOV and unlimited rendering distance
-        this.camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1e-13, 500); 
+        // Create a new perspective camera with 90 FOV
+        this.camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 10e-8, 2000); 
         this.camera.position.copy(Graphics.INITIAL_CAMERA_POSITION);
 
         // Create a new WebGL renderer and append the canvas to the DOM
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
+        this.renderer = new THREE.WebGLRenderer({ antialias: true, precision: 'highp' });
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(window.devicePixelRatio);
         document.body.appendChild(this.renderer.domElement);
@@ -77,9 +77,6 @@ export class Graphics {
             this.labelRenderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Add a debug grid helper
-        // this.scene.add(new THREE.GridHelper(60, 150));
-
         // Add the stats 
         this.stats = new Stats();
         document.body.append(this.stats.dom);
@@ -90,13 +87,13 @@ export class Graphics {
      * @param name The name of the texture.
      */
     loadTexture(name: string) {
-        const texture = Graphics.TEXTURE_LOADER.load(Graphics.TEXTURE_FOLDER + name, undefined, undefined, e => console.error(e.message));
+        const texture = Graphics.TEXTURE_LOADER.load(Graphics.TEXTURE_FOLDER + name, undefined, undefined, e => console.error(e));
         texture.colorSpace = THREE.SRGBColorSpace;
         return texture;
     }
 
     /**
-     * Changes the scale used by the rendering scene.
+     * Changes the uniform scale used by the rendering scene. 
      */
     setSceneScale(scale: number) {
         this.camera.scale.set(1, 1, 1).multiplyScalar(scale);
@@ -116,22 +113,27 @@ export class Graphics {
         return new THREE.Mesh(geometry, material);
     }  
 
-    createOrbitLine(position: THREE.Vector3, color?: number, thickness?: number): THREE.Line {
-        if (color === undefined)
-            color = 0xFFFFFF;
-        if (thickness === undefined)
-            thickness = 1;
+    /**
+     * Creates and returns a new orbit line in the scene. 
+     * @param position Initial position of the line.
+     * @param color Color of the line. If not specified, it will be white (`0xFFFFFF`).
+     * @param thickness Thickness of the line. If not specified, it will be `1`.
+     */
+    createOrbitLine(position: THREE.Vector3, color: number = 0xFFFFFF, thickness: number = 1): THREE.Line {
+        // Create a new geometry with the specified position as attribute
         const geometry = new THREE.BufferGeometry();
         const vertices = new Float32Array([position.x, position.y, position.z]);
         geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+        // Define the material of the orbit
         const material = new THREE.LineBasicMaterial( { color: color, linewidth: thickness });
+        // Create the orbit line
         const orbit = new THREE.Line(geometry, material);
         orbit.frustumCulled = false;
         return orbit;
     }
 
     /**
-     * Calls `.render()` to each object.
+     * Calls `.render()` to each object (`Graphics.renderer`, `Graphics.labelRenderer` and `Graphics.stats`).
      */
     render() {
         this.renderer.render(this.scene, this.camera);

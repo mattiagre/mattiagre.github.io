@@ -68,7 +68,7 @@ export class SolarSystem {
         this.dateDiv.textContent = 'Epoch: ' + SolarSystem.INITIAL_DATE.toLocaleString();
         document.body.appendChild(this.dateDiv);
 
-        // Create the solver
+        // Create the solver (default: Yoshida)
         this.solver = new Solver(YOSHIDA_INTEGRATOR);
 
         // Create the controls for the camera
@@ -85,7 +85,7 @@ export class SolarSystem {
         orbitsFolder.add(this.#guiControls, 'orbitsDensity', 0.1, 1).name('Density');
         orbitsFolder.add(Body, 'ORBITS_MAX_VERTEX', 100, 10_000, 10).name('Max vertex');
 
-        // Add the click event listener 
+        // Add the click event listener. If the user clicks on a planet, is will be chosen as the camera target.
         const rendererDom = this.graphics.labelRenderer.domElement;
         rendererDom.addEventListener('click', event => {
             const mouse = new THREE.Vector2(

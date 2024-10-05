@@ -26,6 +26,9 @@ export class BodyRotation {
      */
     readonly axis: THREE.Vector3;
 
+    /**
+     * Constructs a new BodyRotation from the obliquity and the period of the rotation.
+     */
     constructor(obliquity: number, period: number) {
         this.obliquity = obliquity;
         this.period = period;
@@ -107,11 +110,13 @@ export class Body {
     } 
 
     /**
-     * Rotates the body around its axis for the specified time interval (in days). If `rotation` is `undefined`, this does nothing.
+     * Rotates the body around its axis for the specified time interval (in days). If `Body.rotation` is `undefined`, this does nothing.
      */
     rotate(interval: number) {
-        if (this.rotation !== undefined)
-            this.model.rotateOnAxis(this.rotation.axis, interval * (AstroSystem.DAY / this.rotation.period) * 2 * Math.PI);
+        if (this.rotation === undefined)
+            return;
+        
+        this.model.rotateOnAxis(this.rotation.axis, interval * (AstroSystem.DAY / this.rotation.period) * 2 * Math.PI);
     }
 
     /**
