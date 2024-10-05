@@ -95,10 +95,8 @@ export class SolarSystem {
             const raycaster = new THREE.Raycaster();
             raycaster.setFromCamera(mouse, this.graphics.camera);
             const intersects = raycaster.intersectObjects(this.bodies.map(body => body.model));
-            if (intersects.length > 0) {
+            if (intersects.length > 0) 
                 this.#cameraTarget = intersects[0].object;
-                // this.cameraControls.maxDistance = (<THREE.Mesh<THREE.SphereGeometry>>this.#cameraTarget).geometry.parameters.radius * 10;
-            }
         });
     }
 
@@ -179,7 +177,7 @@ export class SolarSystem {
         this.#requestHandle = window.requestAnimationFrame(this.animate);
 
         if (this.#cameraTarget !== undefined) {
-            this.cameraControls.target = this.#cameraTarget.position;
+            this.cameraControls.target = this.#cameraTarget.position.clone();
             this.cameraControls.update();
         }
         this.graphics.render();

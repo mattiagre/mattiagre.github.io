@@ -30,4 +30,5 @@ module.exports = {
     }),
     new MiniCssExtractPlugin()
   ],
+  mode: 'production'
 };

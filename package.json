@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "npm run build && gh-pages -d public"
   },
   "keywords": [],
   "author": "Mattia Gregnanin",
@@ -14,6 +15,7 @@
     "@types/dat.gui": "^0.7.12",
     "@types/three": "^0.161.2",
     "css-loader": "^6.10.0",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.8.0",
     "ts-loader": "^9.5.1",

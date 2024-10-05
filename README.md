@@ -1,5 +1,5 @@
 ## A dynamic Solar System simulator
 
-[![pages-build-deployment](https://github.com/mattiagre/mattiagre.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/mattiagre/mattiagre.github.io/actions/workflows/pages/pages-build-deployment)
+[![Run Webpack and Deploy Pages](https://github.com/mattiagre/mattiagre.github.io/actions/workflows/webpack.yml/badge.svg)](https://github.com/mattiagre/mattiagre.github.io/actions/workflows/webpack.yml)
 
 Compile running `npm run build`.
