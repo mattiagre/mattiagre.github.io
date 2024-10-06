@@ -1,6 +1,7 @@
 .DS_Store
 /.vscode/
 /node_modules/
+/public/index.html
 /public/main.css
 /public/main.js
 /public/main.js.LICENSE.txt
